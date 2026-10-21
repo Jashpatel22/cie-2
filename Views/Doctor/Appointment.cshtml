@@ -1,0 +1,72 @@
+@model HospitalAppointment.Models.Doctor
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Hospital Appointment</title>
+
+</head>
+
+<body>
+
+    <h1>Book Hospital Appointment</h1>
+
+    @if (ViewBag.Message != null)
+    {
+        <h3>
+            @ViewBag.Message
+        </h3>
+    }
+
+    <form method="post"
+          action="/Doctor/Appointment">
+
+        <!-- Hidden field stores DoctorId. -->
+        <input type="hidden"
+               name="DoctorId"
+               value="@Model?.DoctorId" />
+
+        <label>
+            Patient Name:
+        </label>
+
+        <br />
+
+        <input type="text"
+               name="PatientName"
+               required />
+
+        <br />
+        <br />
+
+        <label>
+            Specialization:
+        </label>
+
+        <br />
+
+        <input type="text"
+               name="Specialization"
+               value="@Model?.Specialization"
+               required />
+
+        <br />
+        <br />
+
+        <button type="submit">
+            Submit Appointment
+        </button>
+
+    </form>
+
+    <br />
+
+    <a href="/Doctor/Index">
+        Back to Doctors
+    </a>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+@model List<HospitalAppointment.Controllers.Post>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Posts</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Posts From JSONPlaceholder</h1>
+
+    <table>
+
+        <tr>
+
+            <th>Post ID</th>
+
+            <th>Post Title</th>
+
+        </tr>
+
+        @foreach (var post in Model)
+        {
+            <tr>
+
+                <td>
+                    @post.Id
+                </td>
+
+                <td>
+                    @post.Title
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+    <br />
+
+    <a href="/Doctor/Index">
+        Back to Doctors
+    </a>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+@model List<HospitalAppointment.Models.Doctor>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Doctors</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Hospital Doctor List</h1>
+
+    <table>
+
+        <tr>
+            <th>Doctor ID</th>
+            <th>Doctor Name</th>
+            <th>Specialization</th>
+            <th>Experience</th>
+            <th>Consultation Fee</th>
+            <th>Total Charge</th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>@doctor.DoctorId</td>
+                <td>@doctor.DoctorName</td>
+                <td>@doctor.Specialization</td>
+                <td>@doctor.Experience years</td>
+                <td>₹@doctor.ConsultationFee</td>
+                <td>₹@(doctor.ConsultationFee + 100)</td>
+
+                <td>
+                    <a href="/Doctor/Details?id=@doctor.DoctorId">
+                        Details
+                    </a>
+
+                    |
+
+                    <a href="/Doctor/Appointment?id=@doctor.DoctorId">
+                        Appointment
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <br>
+
+    <a href="/Doctor/Posts">
+        View Posts From API
+    </a>
+
+</body>
+</html>
